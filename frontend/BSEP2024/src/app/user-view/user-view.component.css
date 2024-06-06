@@ -1,0 +1,103 @@
+.userViewWrapper{
+    padding: 48px;
+    width: fit-content;
+}
+.personal-info{
+    border: 1px solid gainsboro;
+    padding: 24px;
+
+    border-radius: 12px;
+}
+.info-wrapper{
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.info-header{
+    min-width: 160px;
+}
+.role-div{
+    font-weight: 500;
+    padding: 4px 48px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    margin-top: 32px;
+    color: white;
+    margin-left: auto;
+}
+.cards{
+    max-width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.card{
+    padding: 16px;
+    border: 1px solid gainsboro;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+    transition: background-color 100ms ease;
+}
+.card:hover{
+    background-color:gainsboro;
+    cursor:pointer;
+}
+.btn{
+    padding: 12px 32px;
+    border-radius: 12px;
+    color: white;
+    background-color:#1e1e1e;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 100ms ease;
+}
+.btn:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+.tablesdiv{
+    display: flex;
+    flex-direction: row;
+}
+.table-width{
+    width: 50%;
+    padding: 4vh;
+}
+
+.all-certificates-div{
+    
+    padding: 4vh;
+    
+}
+
+.buttonsdiv{
+    display: flex;
+    justify-content: space-evenly;
+}
+.example-full-width{
+    width: 300px;
+
+}
+.withdraw-btn{
+    margin-left: auto;
+    display: block;
+    padding: 4px 12px;
+    margin-top: 50px;
+    border: 2px solid red;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    transition: all 200ms ease;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+.withdraw-btn:hover{
+    background-color:red;
+    cursor: pointer;
+    color: white;
+}

@@ -1,0 +1,94 @@
+
+<div class="userViewWrapper">
+    <div style="font-size: 28px; margin-bottom: 12px; font-weight: 500;">Personal Info</div>
+    <div style="display: flex;flex-direction: row; justify-content: space-between;width:calc(92vw - 96px);">
+        <div class="personal-info">
+            <div style="margin-bottom: 16px;font-size: 24px;">{{user?.firstName + " " + user?.lastName}}</div>
+            <div class="info-wrapper">
+                <div class="info-header">Email:</div>
+                <div class="info-data">{{user?.email}}</div>
+            </div>
+    
+            <div class="info-wrapper">
+                <div class="info-header">Organization:</div>
+                <div>{{user?.organization}}</div>
+            </div>
+    
+            <div class="info-wrapper">
+                <div class="info-header">Country:</div>
+                <div>{{user?.country}}</div>
+            </div>
+    
+            <div class="info-wrapper">
+                <div class="info-header">City:</div>
+                <div>{{user?.city}}</div>
+            </div>
+            <div *ngIf="user?.userType === 0" style="width: 100%;" class="info-wrapper">
+                <div style="background-color: orangered;" class="role-div">Admin</div>
+            </div>
+            <div *ngIf="user?.userType === 1" style="width: 100%;" class="info-wrapper">
+                <div style="background-color: blue;" class="role-div">CA</div>
+            </div>
+            <div *ngIf="user?.userType === 2" style="width: 100%;" class="info-wrapper">
+                <div style="background-color: black;" class="role-div">End Entity</div>
+            </div>
+        </div>
+
+        <div style="display: flex;flex-direction: column; gap: 12px;">
+            <button class="btn" (click)="onCreateCert()">Create Certificate</button>
+            <button class="btn" (click)="onSelfSigned()" *ngIf="user?.userType==0">Create Self-Signed Certificate</button>
+            <button (click)="onLogout()" style="background-color: white; color: #1e1e1e;margin-top: 12px;" class="btn">Log out</button>
+        </div>
+    </div>
+
+    <div *ngIf="user?.userType==0" style="font-size: 28px; margin-bottom: 12px; font-weight: 500;margin-top: 64px;" [ngStyle]="allCertificateDtos.length === 0 ? { 'text-decoration': 'line-through' } : null">All system certificates</div>
+    <div class="cards" *ngIf="user?.userType==0">
+        <div class="card" *ngFor="let c of allCertificateDtos" (click)="onRowClicked(c!.subjectId,c!.serialNumber)">
+
+            <div style="margin-bottom: 24px;font-size: 20px;">{{c?.serialNumber}}</div>
+            <div class="info-wrapper">
+                <div class="info-header">Subject name:</div>
+                <div>{{c?.subjectName}}</div>
+            </div>
+            <div class="info-wrapper">
+                <div class="info-header">Type:</div>
+                <div>{{c?.typeCertificate}}</div>
+            </div>
+            <button class="withdraw-btn" *ngIf="c.valid && user?.userType==0" (click)="onWithdrawCertificate(c)">Withdraw</button>
+        </div>
+    </div>
+
+    
+    <div style="font-size: 28px; margin-bottom: 12px; font-weight: 500;margin-top: 64px;" [ngStyle]="issuerCertificateDtos.length === 0 ? { 'text-decoration': 'line-through' } : null">Issued certificates</div>
+    <div class="cards">
+        <div class="card" *ngFor="let c of issuerCertificateDtos" (click)="onRowClicked(c!.subjectId,c!.serialNumber)">
+
+            <div style="margin-bottom: 24px;font-size: 20px;">{{c?.serialNumber}}</div>
+            <div class="info-wrapper">
+                <div class="info-header">Subject name:</div>
+                <div>{{c?.subjectName}}</div>
+            </div>
+            <div class="info-wrapper">
+                <div class="info-header">Type:</div>
+                <div>{{c?.typeCertificate}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="font-size: 28px; margin-bottom: 12px; font-weight: 500;margin-top: 64px;" [ngStyle]="subjectCertificateDtos.length === 0 ? { 'text-decoration': 'line-through' } : null">Certificates issued to me</div>
+    <div class="cards">
+        <div class="card" *ngFor="let c of subjectCertificateDtos" (click)="onRowClicked(c!.subjectId,c!.serialNumber)">
+
+            <div style="margin-bottom: 24px;font-size: 20px;">{{c?.serialNumber}}</div>
+            <div class="info-wrapper">
+                <div class="info-header">Subject name:</div>
+                <div>{{c?.subjectName}}</div>
+            </div>
+            <div class="info-wrapper">
+                <div class="info-header">Type:</div>
+                <div>{{c?.typeCertificate}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

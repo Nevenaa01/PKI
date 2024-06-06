@@ -1,0 +1,28 @@
+<!--<form [formGroup]="LoginForm" autocomplete="off" class="logindiv">
+    <h1>Login</h1>
+    <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="example-full-width" (click)="OnLogin()">LogIn</button>
+</form>    -->
+
+<form [formGroup]="LoginForm" autocomplete="off" class="form">
+
+    <h1 style="font-weight: bold; text-align: center;">Login</h1>
+    <div style="margin-bottom: 12px;" class="input-div">
+        <label>Username</label>
+        <input type="text" placeholder="Enter username" formControlName="username"/>
+    </div>
+    <div class="input-div">
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" formControlName="password"/>
+    </div>
+
+    <button class="btn" (click)="OnLogin()">Login</button>
+
+</form>

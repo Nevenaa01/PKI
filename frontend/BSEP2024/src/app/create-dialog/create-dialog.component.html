@@ -1,0 +1,35 @@
+<form [formGroup]="CreateForm" autocomplete="off" class="creatediv">
+  <h4>Create certificate</h4>
+  <mat-form-field>
+    <mat-label>Subject</mat-label>
+    <mat-select formControlName="usernameSubject">
+      <mat-option *ngFor="let user of subjects" [value]="user.id">
+        {{user.username}}  ({{types[user.userType]}})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="user?.userType==0">
+    <mat-label>Issuer</mat-label>
+    <mat-select formControlName="usernameIssuer">
+      <mat-option *ngFor="let user of issuers" [value]="user.id">
+        {{user.username}}  ({{types[user.userType]}})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Exp. date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Certificates</mat-label>
+    <mat-select formControlName="certificate">
+      <mat-option *ngFor="let certificate of certificates" [value]="certificate.serialNumber">
+        {{certificate.serialNumber}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createCert()">Create</button>
+</form>
